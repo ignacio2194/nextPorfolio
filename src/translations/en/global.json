@@ -1,0 +1,52 @@
+{
+    
+    "navBar":{
+        "Home" :"Home",
+        "Skills" :"Skills",
+        "Projects" :" Projects",
+        "button-cv" : "Resume"
+    },
+    "banner-title":{
+        "hi-im": "Hi everyone, I'm Ignacio!"
+    },
+    "banner-text":{
+        "hi-im": "A Frontend Developer living in Argentina"
+    },
+    "banner-typewriter":{
+        "hi-im": "Im a web developer"
+    },
+    "aboutme-title":{
+        "hi-im": "About me"
+    },
+    "aboutme-text":{
+        "hi-im": "I'm creative, self-taught and like collaborative work. I have the ability to adapt to different areas of work and I always seek to develop professionally in areas that challenge me to improve day by day, demonstrating all my skills. To this day I find myself carrying out my own projects and some of the technologies that I have learned and used are : HTML | CSS | JavaScript | React | Redux-toolkit| Git | Github | Tailwind | Gulp.js| npm | yarn | Bootstrap"
+    },
+    "projects-title":{
+        "title" : "Some projects so far"
+    },
+     "projects-title-card":{
+        "note-app": "Note app ",
+        "library-app" : "Library app",
+        "Rick-and-Morty" : "Rick and Morty",
+        "Music-Festival" : "Music festival"
+    },
+    "projects-text-card":{
+        "app-notes":"Is a simple crud note app (create data, read data, delete data and update data) using redux-toolkit ",
+        "library-app":"This app was built as a group project using the useContext hook and redux-toolkit framework",
+        "Rick-and-Morty": "Using the Rick and Morty API and rendering the information in the DOM and there is also a little browser",
+        "Music-festival": " Using the Rick and Morty API and rendering the information in the DOM and there is also a little browser"
+    },
+    "button-card":{
+    "button-text":"Show me this project"
+    },
+     "tech-stack":{
+        "title": "My tech stack",
+        "text" :"This is the stack that i usually use to create my projects."
+    },
+    "current-lerning":{
+        "title": "My current learning path "
+    },
+    "footer":{
+        "title": "Contact me"
+    }
+}

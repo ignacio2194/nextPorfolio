@@ -1,0 +1,52 @@
+{
+    "navBar":{
+        "Home" :"Inicio",
+        "Skills" :"Habilidades",
+        "Projects" :" Proyectos",
+        "button-cv" : "Curriculum"
+    },
+    "banner-title":{
+        "hi-im": "¡Hola a todos, soy Ignacio!"
+    },
+    "banner-text":{
+        "hi-im": " viviendo en Argentina"
+    },
+    "banner-typewriter":{
+        "hi-im": "Soy programador web"
+    },
+    "aboutme-title":{
+        "hi-im": "Sobre mi"
+    },
+    "aboutme-text":{
+        "hi-im": "Soy creativo, autodidacta y me gusta el trabajo colaborativo. Tengo la capacidad de adaptarme a diferentes áreas de trabajo y siempre busco desarrollarme profesionalmente en áreas que me desafíen a mejorar día a día, demostrando todas mis habilidades. Al día de hoy me encuentro realizando mis propios proyectos y algunas de las tecnologías que he aprendido y utilizado son: HTML | CSS | JavaScript | React | Redux-toolkit| Git | Github | Tailwind | Gulp.js| npm | yarn | Bootstrap"
+    },
+    "projects-title":{
+        "title" : "Algunos proyectos hechos hasta ahora"
+    },
+    "projects-title-card":{
+        "note-app": "App de notas ",
+        "library-app" : "Biblioteca movil",
+        "Rick-and-Morty" : "Rick y Morty",
+        "Music-Festival" : "Festival de musica"
+    },
+    "projects-text-card":{
+        "app-notes":"Es una aplicación simple de notas (crear datos, leer datos, eliminar datos y actualizar datos) usando redux-toolkit",
+        "library-app":"Esta aplicación se creó como un proyecto de grupo usando el hook useContext y redux-toolkit",
+        "Rick-and-Morty": "Usando la API de Rick and Morty y renderizando la información en el DOM ademas hay un buscador",
+        "Music-festival": " Esta página es un sitio web informativo donde se encuentran todos los eventos musicales de ese año."
+    },
+    "button-card":{
+        "button-text":"Mostrame este proyecto"
+        },
+    "tech-stack":{
+        "title": "Mi stack tecnologico",
+        "text" :"Este es el stack que suelo usar para crear mis proyectos."
+    },
+    "current-lerning":{
+        "title": "Mi aprendizaje actual"
+    },
+    "footer":{
+        "title": "Contáctame"
+    }
+
+}
