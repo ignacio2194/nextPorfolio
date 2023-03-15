@@ -36,6 +36,7 @@ const Skills = () => {
     { img: mySQL_logo, name: "MySQL" },
   ];
   const [t, i18] = useTranslation("global");
+
   return (
     <div className="container mt-3">
       <div className={`text-center`} id="skills">
