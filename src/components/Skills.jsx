@@ -11,7 +11,7 @@ import sassLogo from "../img/Sass_logo.png";
 import Bootstrap_Logo from "../img/Bootstrap_logo.png";
 import Tailwind_logo from "../img/tailwind-css-icon.png";
 import nextJs from "../img/nextJs_logo.png";
-import javaLogo from "../img/java_Logo.png"
+import java_Logo from "../img/java_Logo.png"
 //styles and utilities
 import styles from "@/styles/Home.module.css";
 import { useTranslation } from "react-i18next";
@@ -32,7 +32,7 @@ const Skills = () => {
     },
     { img: Bootstrap_Logo, name: "Bootstrap" },
     { img: FireBase_logo, name: "Firebase" },
-    {img:javaLogo, name: "Java"},
+    {img:java_Logo, name: "Java"},
     { img: mySQL_logo, name: "MySQL" },
   ];
   const [t, i18] = useTranslation("global");
