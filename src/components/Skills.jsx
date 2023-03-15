@@ -11,6 +11,7 @@ import sassLogo from "../img/Sass_logo.png";
 import Bootstrap_Logo from "../img/Bootstrap_logo.png";
 import Tailwind_logo from "../img/tailwind-css-icon.png";
 import nextJs from "../img/nextJs_logo.png";
+import javaLogo from '../img/java_Logo.png'
 //styles and utilities
 import styles from "@/styles/Home.module.css";
 import { useTranslation } from "react-i18next";
@@ -31,6 +32,7 @@ const Skills = () => {
     },
     { img: Bootstrap_Logo, name: "Bootstrap" },
     { img: FireBase_logo, name: "Firebase" },
+    {img:javaLogo, name: "Java"},
     { img: mySQL_logo, name: "MySQL" },
   ];
   const [t, i18] = useTranslation("global");
@@ -43,11 +45,11 @@ const Skills = () => {
         <p className={styles.textSkill}>{t("tech-stack.text")}</p>
       </div>
 
-      <div className="  container  row ">
+      <div className={`container ${styles.skills} row `}>
         {SkillImg.map((item, index) => {
           return (
-            <div className=" d-flex col justify-content-center" key={index}>
-              <div className={` col-md-12  col-sm-12 ${styles.imgCarrousel} `}>
+            <div className=" d-flex col justify-content-center container" key={index}>
+              <div className={`${styles.imgCarrousel} `}>
                 <Image src={item.img} alt="" />
                 <h6 className={`text-center ${styles.textSkill} mt-2`}>
                   {item.name}

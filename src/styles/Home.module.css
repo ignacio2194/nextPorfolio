@@ -262,12 +262,28 @@
   color: #017acb;
 }
 /* images skills */
+
+
+@media (max-width:550px) {
+  .skills{
+    display: grid;
+    grid-template-columns: repeat(1,1fr) !important;
+  }
+}
+@media (min-width:1200px) {
+  .skills{
+    display: grid;
+    grid-template-columns: repeat(5,1fr) !important;
+  }
+}
 @media (max-width: 768px) {
+  
   .current-image {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+ 
 }
 .image img {
   height: 200px !important;
