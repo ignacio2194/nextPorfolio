@@ -276,6 +276,7 @@
     grid-template-columns: repeat(5,1fr) !important;
   }
 }
+
 @media (max-width: 768px) {
   
   .current-image {
