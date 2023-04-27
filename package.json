@@ -10,17 +10,21 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@sendgrid/mail": "^7.7.0",
     "bootstrap": "^5.2.3",
+    "circular-json": "^0.5.9",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "framer-motion": "^10.0.0",
     "i18next": "^22.4.6",
     "next": "13.1.6",
+    "nodemailer": "^6.9.1",
     "react": "18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "18.2.0",
     "react-i18next": "^12.1.5",
     "react-icons": "^4.7.1",
+    "react-toastify": "^9.1.2",
     "typewriter-effect": "^2.19.0"
   }
 }

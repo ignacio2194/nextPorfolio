@@ -7,8 +7,8 @@ import global_en from "../translations/en/global.json";
 import Banner from "@/components/Banner";
 import Projects from "@/components/projects";
 import Skills from "@/components/Skills";
-import CurrentLerning from "@/components/CurrentLearning";
 import Footer from "@/components/Footer";
+import Form from '@/components/Form'
 i18next.init({
   interpolation: { escapeValue: false },
   lng: "es",
@@ -32,7 +32,7 @@ export default function Home() {
           <Banner/>
           <Projects/>
           <Skills/>
-          <CurrentLerning/>
+          <Form/>
         </main>
         <footer>
           <Footer/>

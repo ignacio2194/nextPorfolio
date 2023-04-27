@@ -83,10 +83,9 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  scrollbar-color:  #e77553   #0f0e17 !important;
-scroll-behavior: smooth;
+  scrollbar-color: #e77553 #0f0e17 !important;
+  scroll-behavior: smooth;
 }
-
 
 body {
   height: 100vh;
@@ -103,6 +102,6 @@ h5 {
     color-scheme: dark;
   }
 }
-.progress-bar {
-  background-color: rgb(28, 170, 28) !important;
+.container-form {
+  width: 750px !important;
 }

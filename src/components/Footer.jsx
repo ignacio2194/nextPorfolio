@@ -15,7 +15,7 @@ const Footer = () => {
   useEffect(() => {
     setDate({ hoy, mesActual, añoActual });
   }, [hoy, mesActual, añoActual]);
-  console.log(date)
+
   return (
     <div className={`${styles.footer} container-fluid `}>
       <div className={styles.contact}>
