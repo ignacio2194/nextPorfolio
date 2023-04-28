@@ -16,7 +16,8 @@ function BasicExample() {
   });
   const [showMe, setNotShowme] = useState(false);
   const [resultRegex ,setResultRegex]=useState(false)
-  const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}@[^\s@]+\.[^\s@]+$/;
+  const regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
+  ;
 
   // function to send email if this params is ok so show me a tost 
   const handler = async (e) => {
@@ -58,25 +59,25 @@ function BasicExample() {
     }
   };
   const handlerInputs = (e) => {
-    e.preventDefault()
-    let result = regex.test(values)
-    setResultRegex(result)
-    if(result === true){ 
-      setValues({ ...values, [e.target.name]: e.target.value });
-      handler()
-    
-    }else{
-      toast.error(' please try again later !', {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
-    }
+    console.log(regex.test(e.target.value))
+    // if(regex.test(values)=== false){ 
+    //   toast.error(' please try again later !', {
+    //     position: "bottom-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //     });
+    // }else{
+    //   let result = regex.test(values)
+    //   setResultRegex(result)
+    //   console.log(resultRegex)
+    //   setValues({ ...values, [e.target.name]: e.target.value });
+    //   handler()
+    // }
    
   
   };
@@ -90,7 +91,7 @@ function BasicExample() {
           <Form.Control
             type="email"
             name="email"
-            value={values.email}
+
             placeholder="Enter email"
             onChange={(e) => handlerInputs(e)}
           />
@@ -103,8 +104,7 @@ function BasicExample() {
             type="text"
             placeholder="Subject"
             name="subject"
-            value={values.subject}
-            onChange={(e) => handlerInputs(e)}
+            onChange={(e) =>  handlerInputs(e)}
           />
         </Form.Group>
         <FloatingLabel controlId="floatingTextarea2" label="Comments">
@@ -112,9 +112,8 @@ function BasicExample() {
             as="textarea"
             placeholder="Leave a comment here"
             style={{ height: "100px" }}
-            value={values.message}
             name="message"
-            onChange={(e) => handlerInputs(e)}
+            onChange={(e) =>  handlerInputs(e)}
           />
         </FloatingLabel>
         <Button
