@@ -8,19 +8,23 @@ import { AiOutlineSend } from "react-icons/ai";
 import Sppinner from "@/components/Sppinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 function BasicExample() {
   const [values, setValues] = useState({
     email: "",
     subject: "",
     message: "",
   });
+  //spinner state
   const [showMe, setNotShowme] = useState(false);
   const [resultRegex, setResultRegex] = useState(false);
+
   const regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
   // function to send email if this params is ok so show me a tost
   const handler = async (e) => {
-    e.preventDefault()
-   
+    console.log(typeof e.preventDefault);
+    e.preventDefault();
+
     try {
       const req = await sendEmail(values.email, values.subject, values.message);
       if (req.status === 200) {
@@ -53,12 +57,14 @@ function BasicExample() {
         });
       }
     } catch (error) {
-      console.error(error.message);
+      console.error(error);
     }
   };
-  const handlerInputs = (e) => {
-
-    if (regex.test(values) === false) {
+  const handlerInputs = () => {
+    if (regex.test(values.email)) {
+      setResultRegex(!resultRegex);
+      handler();
+    } else {
       toast.error(" please try again later !", {
         position: "bottom-right",
         autoClose: 5000,
@@ -69,10 +75,6 @@ function BasicExample() {
         progress: undefined,
         theme: "light",
       });
-    } else {
-      setResultRegex(!resultRegex);
-      handler()
-  
     }
   };
 
@@ -87,7 +89,9 @@ function BasicExample() {
             name="email"
             required
             placeholder="Enter email"
-            onChange={(e) =>  setValues({ ...values, [e.target.name]: e.target.value })}
+            onChange={(e) =>
+              setValues({ ...values, [e.target.name]: e.target.value })
+            }
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
@@ -98,7 +102,9 @@ function BasicExample() {
             type="text"
             placeholder="Subject"
             name="subject"
-            onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
+            onChange={(e) =>
+              setValues({ ...values, [e.target.name]: e.target.value })
+            }
           />
         </Form.Group>
         <FloatingLabel controlId="floatingTextarea2" label="Comments">
@@ -107,7 +113,9 @@ function BasicExample() {
             placeholder="Leave a comment here"
             style={{ height: "100px" }}
             name="message"
-            onChange={(e) =>setValues({ ...values, [e.target.name]: e.target.value })}
+            onChange={(e) =>
+              setValues({ ...values, [e.target.name]: e.target.value })
+            }
           />
         </FloatingLabel>
         <Button
