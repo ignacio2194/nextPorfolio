@@ -16,56 +16,86 @@ function BasicExample() {
     message: "",
   });
   //spinner state
-  const [showMe, setNotShowme] = useState(false);
+
   const [resultRegex, setResultRegex] = useState(false);
 
   const regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
   // function to send email if this params is ok so show me a tost
-  const handler = async (e) => {
-    console.log(typeof e.preventDefault);
-    e.preventDefault();
-
-    try {
-      const req = await sendEmail(values.email, values.subject, values.message);
-      if (req.status === 200) {
-        setNotShowme(false);
-        toast.success("Email sent!", {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        setValues({
-          email: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        toast.error("There  was are an error, please try again later !", {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const handlerInputs = () => {
+  // const handler = async (e) => {
+  //   try {
+  //     const req = await sendEmail(values.email, values.subject, values.message);
+  //     if (req.status === 200) {
+  //       toast.success("Email sent!", {
+  //         position: "bottom-right",
+  //         autoClose: 5000,
+  //         hideProgressBar: false,
+  //         closeOnClick: true,
+  //         pauseOnHover: true,
+  //         draggable: true,
+  //         progress: undefined,
+  //         theme: "light",
+  //       });
+  //       setValues({
+  //         email: "",
+  //         subject: "",
+  //         message: "",
+  //       });
+  //     } else {
+  //       toast.error("There  was are an error, please try again later !", {
+  //         position: "bottom-right",
+  //         autoClose: 5000,
+  //         hideProgressBar: false,
+  //         closeOnClick: true,
+  //         pauseOnHover: true,
+  //         draggable: true,
+  //         progress: undefined,
+  //         theme: "light",
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  const handlerInputs = async (e) => {
+    e.preventDefault()
     if (regex.test(values.email)) {
       setResultRegex(!resultRegex);
-      handler();
+      try {
+        const req = await sendEmail(values.email, values.subject, values.message);
+        if (req.status === 200) {
+          toast.success("Email sent!", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          setValues({
+            email: "",
+            subject: "",
+            message: "",
+          });
+          setResultRegex(false);
+        } else {
+          toast.error("There was an error, please try again later!", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
     } else {
-      toast.error(" please try again later !", {
+      toast.error("Please enter a valid email address!", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -81,7 +111,7 @@ function BasicExample() {
   return (
     <div className="container container-form mt-4 mb-4">
       <h1 className={`${styles.titleSkill} text-center`}>Contact me</h1>
-      <Form onSubmit={(e) => handler(e)}>
+      <Form >
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -89,6 +119,7 @@ function BasicExample() {
             name="email"
             required
             placeholder="Enter email"
+            value={values.email}
             onChange={(e) =>
               setValues({ ...values, [e.target.name]: e.target.value })
             }
@@ -101,6 +132,7 @@ function BasicExample() {
           <Form.Control
             type="text"
             placeholder="Subject"
+            value={values.subject}
             name="subject"
             onChange={(e) =>
               setValues({ ...values, [e.target.name]: e.target.value })
@@ -113,6 +145,7 @@ function BasicExample() {
             placeholder="Leave a comment here"
             style={{ height: "100px" }}
             name="message"
+            value={values.message}
             onChange={(e) =>
               setValues({ ...values, [e.target.name]: e.target.value })
             }
@@ -122,10 +155,10 @@ function BasicExample() {
           variant="primary"
           type="submit"
           className="mt-2 items-center"
-          onClick={() => handlerInputs()}
+          onClick={(e) => handlerInputs(e)}
         >
           <p className="mb-0">
-            {showMe === false ? (
+            {resultRegex === false ? (
               <AiOutlineSend />
             ) : (
               <Sppinner value={resultRegex} />
