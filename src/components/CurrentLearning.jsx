@@ -13,7 +13,7 @@ const CurrentLerning = () => {
         {t("current-lerning.title")}🤓
       </h5>
       <div className="row justify-content-center align-items-center mt-5 gap-5 ">
-        <div className={`${styles.image}  col-md-4 col-xs-12 col-sm-12 ` }>
+        <div className={`${styles.image}  col-md-4 col-xs-12 col-sm-12 `}>
           <div>
             <Image src={react_Logo} alt="" />{" "}
           </div>
@@ -23,7 +23,7 @@ const CurrentLerning = () => {
           </div>
           <ProgressBar now={20} className={`${styles.progress}   mb-5`} />
         </div>
-        <div className={`${styles.image}  col-md-4 col-xs-12 col-sm-12 ` }>
+        <div className={`${styles.image}  col-md-4 col-xs-12 col-sm-12 `}>
           <div className="current-image">
             <Image src={tSLogo} alt="" />
           </div>

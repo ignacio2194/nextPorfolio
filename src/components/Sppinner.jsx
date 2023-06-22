@@ -1,9 +1,12 @@
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
 
-function BasicExample({value}) { 
-  console.log(value)
+function BasicExample({ value }) {
   return (
-    <Spinner animation="border" role={value.toString()}  className={`${value ===true? 'd-block ': 'd-none'}`} >
+    <Spinner
+      animation="border"
+      role={value.toString()}
+      className={`${value === true ? "d-block " : "d-none"}`}
+    >
       <span className="visually-hidden">Loading...</span>
     </Spinner>
   );

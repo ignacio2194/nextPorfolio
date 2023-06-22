@@ -6,6 +6,7 @@ import sendEmail from "@/pages/api/send-email";
 import styles from "@/styles/Home.module.css";
 import { AiOutlineSend } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
+import Sppinner from "./Sppinner";
 import "react-toastify/dist/ReactToastify.css";
 
 function BasicExample() {

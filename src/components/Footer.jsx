@@ -59,11 +59,11 @@ const Footer = () => {
         >
           <span className="text-light last-updated-text">
             {" "}
-            {` ${t("footer.LastUpdated")} ${date.hoy}/${date.mesActual}/${date.añoActual}`}
+            {` ${t("footer.LastUpdated")} ${date.hoy}/${date.mesActual}/${
+              date.añoActual
+            }`}
           </span>
-          <span className="text-light ">
-           {`${t("footer.TecnologyUsed")}`}
-          </span>
+          <span className="text-light ">{`${t("footer.TecnologyUsed")}`}</span>
         </div>
       </div>
     </div>

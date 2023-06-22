@@ -7,7 +7,6 @@ import Navbr from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "@/styles/Home.module.css";
 
-
 const Navbar = () => {
   const [t, i18n] = useTranslation("global");
   return (
