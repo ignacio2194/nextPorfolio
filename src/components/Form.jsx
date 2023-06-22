@@ -5,7 +5,6 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import sendEmail from "@/pages/api/send-email";
 import styles from "@/styles/Home.module.css";
 import { AiOutlineSend } from "react-icons/ai";
-import Sppinner from "@/components/Sppinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -15,53 +14,21 @@ function BasicExample() {
     subject: "",
     message: "",
   });
-  //spinner state
 
   const [resultRegex, setResultRegex] = useState(false);
 
   const regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-  // function to send email if this params is ok so show me a tost
-  // const handler = async (e) => {
-  //   try {
-  //     const req = await sendEmail(values.email, values.subject, values.message);
-  //     if (req.status === 200) {
-  //       toast.success("Email sent!", {
-  //         position: "bottom-right",
-  //         autoClose: 5000,
-  //         hideProgressBar: false,
-  //         closeOnClick: true,
-  //         pauseOnHover: true,
-  //         draggable: true,
-  //         progress: undefined,
-  //         theme: "light",
-  //       });
-  //       setValues({
-  //         email: "",
-  //         subject: "",
-  //         message: "",
-  //       });
-  //     } else {
-  //       toast.error("There  was are an error, please try again later !", {
-  //         position: "bottom-right",
-  //         autoClose: 5000,
-  //         hideProgressBar: false,
-  //         closeOnClick: true,
-  //         pauseOnHover: true,
-  //         draggable: true,
-  //         progress: undefined,
-  //         theme: "light",
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+
   const handlerInputs = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (regex.test(values.email)) {
       setResultRegex(!resultRegex);
       try {
-        const req = await sendEmail(values.email, values.subject, values.message);
+        const req = await sendEmail(
+          values.email,
+          values.subject,
+          values.message
+        );
         if (req.status === 200) {
           toast.success("Email sent!", {
             position: "bottom-right",
@@ -109,9 +76,9 @@ function BasicExample() {
   };
 
   return (
-    <div className="container container-form mt-4 mb-4">
+    <div className={`container ${styles.containerForm} mt-4 mb-4`}>
       <h1 className={`${styles.titleSkill} text-center`}>Contact me</h1>
-      <Form >
+      <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -123,6 +90,7 @@ function BasicExample() {
             onChange={(e) =>
               setValues({ ...values, [e.target.name]: e.target.value })
             }
+            className="w-100 w-lg-50"
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
@@ -137,6 +105,7 @@ function BasicExample() {
             onChange={(e) =>
               setValues({ ...values, [e.target.name]: e.target.value })
             }
+            className="w-100 w-lg-50"
           />
         </Form.Group>
         <FloatingLabel controlId="floatingTextarea2" label="Comments">
@@ -149,13 +118,14 @@ function BasicExample() {
             onChange={(e) =>
               setValues({ ...values, [e.target.name]: e.target.value })
             }
+            className="w-100 w-lg-50"
           />
         </FloatingLabel>
         <Button
           variant="primary"
           type="submit"
-          className="mt-2 items-center"
-          onClick={(e) => handlerInputs(e)}
+          className="mt-2 d-flex align-items-center"
+          onClick={handlerInputs}
         >
           <p className="mb-0">
             {resultRegex === false ? (

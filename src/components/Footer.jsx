@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import styles from "@/styles/Home.module.css";
 const Footer = () => {
   const [t, i18n] = useTranslation("global");
-  const fecha = new Date("2023-2-15");
+  const fecha = new Date("2023-6-10");
   const hoy = fecha.getDate();
   const mesActual = fecha.getMonth() + 1;
   const añoActual = fecha.getFullYear();
@@ -59,10 +59,10 @@ const Footer = () => {
         >
           <span className="text-light last-updated-text">
             {" "}
-            {`   Last updated: ${date.hoy}/${date.mesActual}/${date.añoActual}`}
+            {` ${t("footer.LastUpdated")} ${date.hoy}/${date.mesActual}/${date.añoActual}`}
           </span>
           <span className="text-light ">
-            This portfolio was created on Next.js
+           {`${t("footer.TecnologyUsed")}`}
           </span>
         </div>
       </div>
