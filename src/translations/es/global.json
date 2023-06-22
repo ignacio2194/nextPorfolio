@@ -24,16 +24,16 @@
         "title" : "Algunos proyectos hechos hasta ahora"
     },
     "projects-title-card":{
-        "note-app": "App de notas ",
+        "sabDeLaTierra": "Sabores de la Tierra",
         "library-app" : "Biblioteca movil",
         "Rick-and-Morty" : "Rick y Morty",
-        "Music-Festival" : "Festival de musica"
+        "BarberApp" : "Barber app"
     },
     "projects-text-card":{
-        "app-notes":"Es una aplicación simple de notas (crear datos, leer datos, eliminar datos y actualizar datos) usando redux-toolkit",
+        "sabDeLaTierra":"Esta app es un CRM creada con React.js, Material-UI, Redux y la db fue creada con C#,.NET y SQLServer",
         "library-app":"Esta aplicación se creó como un proyecto de grupo usando el hook useContext y redux-toolkit",
         "Rick-and-Morty": "Usando la API de Rick and Morty y renderizando la información en el DOM ademas hay un buscador",
-        "Music-festival": " Esta página es un sitio web informativo donde se encuentran todos los eventos musicales de ese año."
+        "BarberApp": " App de turnos creado en HTML, CSS y JavaScript vanilla para salones de belleza y peluquerías."
     },
     "button-card":{
         "button-text":"Mostrame este proyecto"
@@ -46,7 +46,9 @@
         "title": "Mi aprendizaje actual"
     },
     "footer":{
-        "title": "Contáctame"
+        "title": "Contáctame",
+        "LastUpdated": "Ultima actualización",
+        "TecnologyUsed": " Este portafolio se creo con Next.js"
     }
 
 }

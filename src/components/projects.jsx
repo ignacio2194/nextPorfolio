@@ -1,21 +1,24 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import crudAPP from "../img/crudAPP.jpg";
+
+import SabDeLaTierra from '../img/saborsdelatierra.png'
 import libraryAppProject from "../img/libraryAppProject.png";
 import rickAndMortyProject from "../img/rickAndMortyProject.jpg";
-import MusicFestival from "../img/MusicFestival_Project.png";
+import BarberApp from "../img/BarberApp.png";
+
 import styles from "@/styles/Home.module.css"; 
 import { useTranslation } from "react-i18next";
+
 const Projects = () => {
   const [t, i18] = useTranslation("global");
   const projects = [
     {
-      name: t("projects-title-card.note-app"),
-      img: crudAPP,
+      name:  t("projects-title-card.sabDeLaTierra"),
+      img: SabDeLaTierra,
       description:
-      t("projects-text-card.app-notes"),
-      link: "https://crud-with-redux-tookit.vercel.app/",
+      t("projects-text-card.sabDeLaTierra"),
+      link: "https://saboresdelatierra.vercel.app/",
     },
     {
       name: t("projects-title-card.library-app"),
@@ -32,11 +35,11 @@ const Projects = () => {
       link: "https://rick-and-morty-app-beige.vercel.app/",
     },
     {
-      name: t("projects-title-card.Music-Festival"),
-      img: MusicFestival,
+      name: t("projects-title-card.BarberApp"),
+      img: BarberApp,
       description: 
-      t("projects-text-card.Music-festival"),
-      link: "https://festi-music.netlify.app/",
+      t("projects-text-card.BarberApp"),
+      link: "https://app-barberia-peluqueria.netlify.app/",
     },
 
   ];
@@ -57,7 +60,7 @@ const Projects = () => {
                 variant="top"
                 src={project.img.src}
                 alt="project images"
-                className={`${styles.projectImages} h-100 text-justify`}
+                className={`${styles.projectImages} ${styles.projectImage} text-justify`}
              
               />
               <Card.Body>

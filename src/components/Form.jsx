@@ -5,67 +5,64 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import sendEmail from "@/pages/api/send-email";
 import styles from "@/styles/Home.module.css";
 import { AiOutlineSend } from "react-icons/ai";
-import Sppinner from "@/components/Sppinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 function BasicExample() {
   const [values, setValues] = useState({
     email: "",
     subject: "",
     message: "",
   });
-  const [showMe, setNotShowme] = useState(false);
+
   const [resultRegex, setResultRegex] = useState(false);
-  const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}@[^\s@]+\.[^\s@]+$/;
 
-  // function to send email if this params is ok so show me a tost
-  const handler = async (e) => {
+  const regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
+  const handlerInputs = async (e) => {
     e.preventDefault();
-
-    try {
-      const req = await sendEmail(values.email, values.subject, values.message);
-      if (req.status === 200) {
-        setNotShowme(false);
-        toast.success("Email sent!", {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        setValues({
-          email: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        toast.error("There  was are an error, please try again later !", {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+    if (regex.test(values.email)) {
+      setResultRegex(!resultRegex);
+      try {
+        const req = await sendEmail(
+          values.email,
+          values.subject,
+          values.message
+        );
+        if (req.status === 200) {
+          toast.success("Email sent!", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          setValues({
+            email: "",
+            subject: "",
+            message: "",
+          });
+          setResultRegex(false);
+        } else {
+          toast.error("There was an error, please try again later!", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-  const handlerInputs = (e) => {
-    e.preventDefault();
-    let result = regex.test(values);
-    setResultRegex(result);
-    if (result === true) {
-      setValues({ ...values, [e.target.name]: e.target.value });
-      handler();
     } else {
-      toast.error(" please try again later !", {
+      toast.error("Please enter a valid email address!", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -79,17 +76,21 @@ function BasicExample() {
   };
 
   return (
-    <div className="container container-form mt-4 mb-4">
+    <div className={`container ${styles.containerForm} mt-4 mb-4`}>
       <h1 className={`${styles.titleSkill} text-center`}>Contact me</h1>
-      <Form onSubmit={() => handlerInputs()}>
+      <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
             name="email"
-            value={values.email}
+            required
             placeholder="Enter email"
-            onChange={(e) => handlerInputs(e)}
+            value={values.email}
+            onChange={(e) =>
+              setValues({ ...values, [e.target.name]: e.target.value })
+            }
+            className="w-100 w-lg-50"
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
@@ -99,9 +100,12 @@ function BasicExample() {
           <Form.Control
             type="text"
             placeholder="Subject"
-            name="subject"
             value={values.subject}
-            onChange={(e) => handlerInputs(e)}
+            name="subject"
+            onChange={(e) =>
+              setValues({ ...values, [e.target.name]: e.target.value })
+            }
+            className="w-100 w-lg-50"
           />
         </Form.Group>
         <FloatingLabel controlId="floatingTextarea2" label="Comments">
@@ -109,14 +113,22 @@ function BasicExample() {
             as="textarea"
             placeholder="Leave a comment here"
             style={{ height: "100px" }}
-            value={values.message}
             name="message"
-            onChange={(e) => handlerInputs(e)}
+            value={values.message}
+            onChange={(e) =>
+              setValues({ ...values, [e.target.name]: e.target.value })
+            }
+            className="w-100 w-lg-50"
           />
         </FloatingLabel>
-        <Button variant="primary" type="submit" className="mt-2 items-center">
+        <Button
+          variant="primary"
+          type="submit"
+          className="mt-2 d-flex align-items-center"
+          onClick={handlerInputs}
+        >
           <p className="mb-0">
-            {showMe === false ? (
+            {resultRegex === false ? (
               <AiOutlineSend />
             ) : (
               <Sppinner value={resultRegex} />

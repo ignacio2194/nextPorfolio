@@ -54,7 +54,7 @@ const Navbar = () => {
                 </button>
 
                 <Nav.Link
-                  href="https://drive.google.com/file/d/1lpRnPSDMJw1Dnqb5glsnmx9SNkeM9wyK/view?usp=sharing"
+                  href="https://drive.google.com/file/d/10D5CaKIIioYjKL_7WEnthdtH3yr-w3Sq/view?usp=sharing"
                   className={`${styles.btnCv}  btn btn-outline-secondary text-white`}
                 >
                   {" "}
