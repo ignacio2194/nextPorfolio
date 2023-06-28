@@ -1,34 +1,20 @@
 const CircularJSON = require('circular-json');
-const https = require('https');
 
 const sendEmail = async (email, subject, message) => {
   const payload = CircularJSON.stringify({ email, subject, message });
 
-  const options = {
-    hostname: 'ignaciobenitezdev.vercel.app',
-    port: 443,
-    path: '/api/email',
+  const apiUrl = process.env.NODE_ENV === 'production'
+    ? 'https://ignaciobenitezdev.vercel.app/api/email'
+    : 'http://localhost:3000/api/email';
+
+  const response = await fetch(apiUrl, {
     method: 'POST',
+    body: payload,
     headers: {
-      'Content-Type': 'application/json',
-      'Content-Length': payload.length
+      'Content-Type': 'application/json'
     }
-  };
-
-  return new Promise((resolve, reject) => {
-    const req = https.request(options, (res) => {
-      res.on('data', (data) => {
-        resolve(data);
-      });
-    });
-
-    req.on('error', (error) => {
-      reject(error);
-    });
-
-    req.write(payload);
-    req.end();
   });
+  return response;
 };
 
 export default sendEmail;
