@@ -2,7 +2,7 @@
 import nodemailer from "nodemailer";
 
 const sendEmail = async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, message, subject } = req.body;
 
   const contentHTML = `
     <h1> User Information:${name}</h1>
@@ -13,21 +13,30 @@ const sendEmail = async (req, res) => {
   `;
 
   let transporter = nodemailer.createTransport({
-    host: "smtp.office365.com",
+    // host: "smtp.office365.com",
+    // port: 587,
+    // // secure: false,
+    // // requireTLS: true,
+    // auth: {
+    //   user: "ignaciobeniteznacho@outlook.com",
+    //   pass: "Skateisnotcrime94",
+    // },
+    host: "smtp.gmail.com",
     port: 587,
     // secure: false,
     // requireTLS: true,
     auth: {
-      user: "ignaciobeniteznacho@outlook.com",
-      pass: "Skateisnotcrime94",
+      user: "awericana@gmail.com",
+      pass: "vfavqfqifflqdggw",
     },
   });
 
   try {
-    const info = await transporter.sendMail({
-      from: "ignaciobeniteznacho@outlook.com",
-      to: "ignaciobeniteznacho@outlook.com",
-      subject: email,
+    await transporter.sendMail({
+      // from: "ignaciobeniteznacho@outlook.com",
+      from: email,
+      to: '"Awericana" <awericana@gmail.com>',
+      subject: subject,
       text: message,
       html: contentHTML,
     });
