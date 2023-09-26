@@ -1,8 +1,7 @@
 // import { NextApiHandler } from 'next';
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
-const sendEmail= async (req, res) => {
-
+const sendEmail = async (req, res) => {
   const { name, email, message } = req.body;
 
   const contentHTML = `
@@ -14,30 +13,29 @@ const sendEmail= async (req, res) => {
   `;
 
   let transporter = nodemailer.createTransport({
-    host: 'smtp.office365.com',
+    host: "smtp.office365.com",
     port: 587,
-    secure: false,
+    secure: true,
     requireTLS: true,
     auth: {
-        user: 'ignaciobeniteznacho@outlook.com',
-        pass: 'Skateisnotcrime94'
+      user: "ignaciobeniteznacho@outlook.com",
+      pass: "Skateisnotcrime94",
     },
   });
 
   try {
     const info = await transporter.sendMail({
-      from: 'ignaciobeniteznacho@outlook.com',
-      to: 'ignaciobeniteznacho@outlook.com',
+      from: "ignaciobeniteznacho@outlook.com",
+      to: "ignaciobeniteznacho@outlook.com",
       subject: email,
       text: message,
       html: contentHTML,
     });
 
-
-    res.status(200).json({ message: 'Email sent successfully' });
+    res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Failed to send email' });
+    res.status(500).json({ message: "Failed to send email" });
   }
 };
 
