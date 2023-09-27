@@ -2,10 +2,10 @@
 import nodemailer from "nodemailer";
 
 const sendEmail = async (req, res) => {
-  const { name, email, message, subject } = req.body;
+  const { email, message, subject } = req.body;
 
   const contentHTML = `
-    <h1> User Information:${name}</h1>
+    <h1> User Information:${subject}</h1>
     <ul>
       <li> User email:${email}</li>
     </ul>
